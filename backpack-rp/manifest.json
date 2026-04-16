@@ -1,0 +1,28 @@
+{
+  "format_version": 1,
+  "header": {
+    "name": "Backpack Resource Pack",
+    "description": "Textures and models for backpack mod",
+    "uuid": "d1e2f3a4-5678-90bc-def1-234567890124",
+    "version": [1, 0, 0],
+    "min_engine_version": [1, 20, 0]
+  },
+  "modules": [
+    {
+      "type": "data",
+      "uuid": "e2f3a4b5-6789-0abc-def2-345678901235",
+      "version": [1, 0, 0]
+    },
+    {
+      "type": "resources",
+      "uuid": "f3a4b5c6-7890-abcd-ef34-567890123546",
+      "version": [1, 0, 0]
+    }
+  ],
+  "dependencies": [
+    {
+      "uuid": "c0a1e2f3-4567-89ab-cdef-012345678901",
+      "version": [1, 0, 0]
+    }
+  ]
+}

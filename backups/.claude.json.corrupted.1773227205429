@@ -1,0 +1,14 @@
+{
+  "installMethod": "native",
+  "autoUpdates": false,
+  "firstStartTime": "2026-03-11T10:12:52.764Z",
+  "opusProMigrationComplete": true,
+  "sonnet1m45MigrationComplete": true,
+  "userID": "515dff46dcbda6660fe7b816a11708fcc1a1bd7a4393a9695af67ab4c0cb0b27",
+  "changelogLastFetched": 1773227090447,
+  "autoUpdatesProtectedForNative": true,
+  "clientDataCache": {
+    "data": null,
+    "timestamp": 1773227205397
+  }
+}

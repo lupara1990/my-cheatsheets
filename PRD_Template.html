@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head>
+    <meta charset="utf-8">
+    <title>Product Requirements Document Template</title>
+    <style>
+        /* Word-compatible styles */
+        body {
+            font-family: Calibri, Arial, sans-serif;
+            font-size: 11pt;
+            line-height: 1.5;
+            color: #333;
+            max-width: 8.5in;
+            margin: 0 auto;
+            padding: 0.5in;
+        }
+
+        h1 {
+            font-size: 24pt;
+            color: #2E4057;
+            border-bottom: 3pt solid #2E4057;
+            padding-bottom: 10pt;
+            margin-top: 24pt;
+            margin-bottom: 12pt;
+            page-break-after: avoid;
+        }
+
+        h2 {
+            font-size: 16pt;
+            color: #2E4057;
+            border-bottom: 1pt solid #ccc;
+            padding-bottom: 6pt;
+            margin-top: 18pt;
+            margin-bottom: 10pt;
+            page-break-after: avoid;
+        }
+
+        h3 {
+            font-size: 13pt;
+            color: #4A6FA5;
+            margin-top: 14pt;
+            margin-bottom: 8pt;
+            page-break-after: avoid;
+        }
+
+        .doc-info {
+            background-color: #F5F5F5;
+            border-left: 4px solid #2E4057;
+            padding: 15pt;
+            margin: 20pt 0;
+        }
+
+        .doc-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .doc-info td {
+            padding: 6pt 10pt;
+            vertical-align: top;
+        }
+
+        .doc-info td:first-child {
+            font-weight: bold;
+            width: 30%;
+            color: #555;
+        }
+
+        .highlight-box {
+            background-color: #FFF8E1;
+            border-left: 4px solid #FFB300;
+            padding: 12pt;
+            margin: 12pt 0;
+        }
+
+        .info-box {
+            background-color: #E3F2FD;
+            border-left: 4px solid #2196F3;
+            padding: 12pt;
+            margin: 12pt 0;
+        }
+
+        table.requirements {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 12pt 0;
+        }
+
+        table.requirements th {
+            background-color: #2E4057;
+            color: white;
+            padding: 10pt;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        table.requirements td {
+            border: 1pt solid #ddd;
+            padding: 10pt;
+            vertical-align: top;
+        }
+
+        table.requirements tr:nth-child(even) {
+            background-color: #F9F9F9;
+        }
+
+        .placeholder {
+            color: #999;
+            font-style: italic;
+        }
+
+        ul, ol {
+            margin: 8pt 0;
+            padding-left: 24pt;
+        }
+
+        li {
+            margin: 4pt 0;
+        }
+
+        .section-intro {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 12pt;
+        }
+
+        .timeline-item {
+            margin: 8pt 0;
+            padding-left: 20pt;
+            border-left: 2pt solid #ccc;
+        }
+
+        .metric-box {
+            display: inline-block;
+            background-color: #E8F5E9;
+            border: 1pt solid #4CAF50;
+            border-radius: 4pt;
+            padding: 8pt 12pt;
+            margin: 4pt;
+        }
+    </style>
+</head>
+<body>
+    <h1>Product Requirements Document (PRD)</h1>
+    <p class="section-intro">Use this template to define product features, requirements, and success criteria. Replace all placeholder text with your specific content.</p>
+
+    <div class="doc-info">
+        <table>
+            <tr>
+                <td>Document Title:</td>
+                <td class="placeholder">[Enter Product/Feature Name]</td>
+            </tr>
+            <tr>
+                <td>Version:</td>
+                <td class="placeholder">[1.0]</td>
+            </tr>
+            <tr>
+                <td>Date:</td>
+                <td class="placeholder">[MM/DD/YYYY]</td>
+            </tr>
+            <tr>
+                <td>Author:</td>
+                <td class="placeholder">[Your Name]</td>
+            </tr>
+            <tr>
+                <td>Stakeholders:</td>
+                <td class="placeholder">[List key stakeholders]</td>
+            </tr>
+            <tr>
+                <td>Status:</td>
+                <td class="placeholder">[Draft / In Review / Approved]</td>
+            </tr>
+        </table>
+    </div>
+
+    <h2>1. Executive Summary</h2>
+    <p class="section-intro">Provide a high-level overview of what this document covers.</p>
+    <p class="placeholder">[Write a 2-3 paragraph summary describing the product/feature, the problem it solves, and the expected outcome. Keep it concise but informative enough for anyone to understand the scope.]</p>
+
+    <div class="highlight-box">
+        <strong>Key Value Proposition:</strong>
+        <p class="placeholder">[In one sentence, describe the primary value this delivers to users/customers]</p>
+    </div>
+
+    <h2>2. Goals & Objectives</h2>
+    <p class="section-intro">Define what success looks like for this product/feature.</p>
+
+    <h3>2.1 Primary Goals</h3>
+    <ul>
+        <li class="placeholder">[Goal 1: e.g., Increase user engagement by 20%]</li>
+        <li class="placeholder">[Goal 2: e.g., Reduce support tickets for X feature]</li>
+        <li class="placeholder">[Goal 3: e.g., Launch MVP by Q3 2024]</li>
+    </ul>
+
+    <h3>2.2 Success Metrics (KPIs)</h3>
+    <div class="metric-box">Metric 1: <span class="placeholder">[e.g., DAUs]</span></div>
+    <div class="metric-box">Metric 2: <span class="placeholder">[e.g., Conversion Rate]</span></div>
+    <div class="metric-box">Metric 3: <span class="placeholder">[e.g., NPS Score]</span></div>
+
+    <h2>3. Background & Context</h2>
+    <p class="section-intro">Explain why this product/feature is needed.</p>
+    <p class="placeholder">[Describe the market context, user research findings, competitive analysis, or business drivers that justify this initiative. Include relevant data, user quotes, or insights.]</p>
+
+    <div class="info-box">
+        <strong>Problem Statement:</strong>
+        <p class="placeholder">[Clearly articulate the problem you're solving. Who has this problem? How severe is it? What are they doing today as a workaround?]</p>
+    </div>
+
+    <h2>4. Target Users</h2>
+    <p class="section-intro">Define who will use this product/feature.</p>
+
+    <h3>4.1 User Personas</h3>
+    <table class="requirements">
+        <tr>
+            <th>Persona</th>
+            <th>Description</th>
+            <th>Key Needs</th>
+        </tr>
+        <tr>
+            <td class="placeholder">[Persona Name]</td>
+            <td class="placeholder">[Brief description: role, demographics, behaviors]</td>
+            <td class="placeholder">[What they need to accomplish]</td>
+        </tr>
+        <tr>
+            <td class="placeholder">[Persona Name]</td>
+            <td class="placeholder">[Brief description]</td>
+            <td class="placeholder">[Key needs]</td>
+        </tr>
+    </table>
+
+    <h3>4.2 User Stories</h3>
+    <p><em>Format: As a [type of user], I want [some goal] so that [some reason/benefit].</em></p>
+    <ul>
+        <li class="placeholder">As a [user type], I want [feature] so that [benefit]</li>
+        <li class="placeholder">As a [user type], I want [feature] so that [benefit]</li>
+        <li class="placeholder">As a [user type], I want [feature] so that [benefit]</li>
+        <li class="placeholder">[Add more as needed]</li>
+    </ul>
+
+    <h2>5. Requirements</h2>
+    <p class="section-intro">Detailed specifications of what needs to be built.</p>
+
+    <h3>5.1 Functional Requirements</h3>
+    <p><em>Features and capabilities the product must have.</em></p>
+    <table class="requirements">
+        <tr>
+            <th style="width: 10%;">ID</th>
+            <th style="width: 40%;">Requirement</th>
+            <th style="width: 15%;">Priority</th>
+            <th style="width: 35%;">Acceptance Criteria</th>
+        </tr>
+        <tr>
+            <td>FR-01</td>
+            <td class="placeholder">[Describe the feature/functionality]</td>
+            <td class="placeholder">[Must/Should/Could]</td>
+            <td class="placeholder">[How to verify this is complete]</td>
+        </tr>
+        <tr>
+            <td>FR-02</td>
+            <td class="placeholder">[Describe the feature]</td>
+            <td class="placeholder">[Must/Should/Could]</td>
+            <td class="placeholder">[Acceptance criteria]</td>
+        </tr>
+        <tr>
+            <td>FR-03</td>
+            <td class="placeholder">[Describe the feature]</td>
+            <td class="placeholder">[Must/Should/Could]</td>
+            <td class="placeholder">[Acceptance criteria]</td>
+        </tr>
+    </table>
+
+    <h3>5.2 Non-Functional Requirements</h3>
+    <p><em>Performance, security, scalability, and other quality attributes.</em></p>
+    <table class="requirements">
+        <tr>
+            <th style="width: 20%;">Category</th>
+            <th style="width: 45%;">Requirement</th>
+            <th style="width: 35%;">Target/Constraint</th>
+        </tr>
+        <tr>
+            <td>Performance</td>
+            <td class="placeholder">[e.g., Page load time]</td>
+            <td class="placeholder">[e.g., < 2 seconds]</td>
+        </tr>
+        <tr>
+            <td>Scalability</td>
+            <td class="placeholder">[e.g., Concurrent users]</td>
+            <td class="placeholder">[e.g., Support 10,000 concurrent]</td>
+        </tr>
+        <tr>
+            <td>Security</td>
+            <td class="placeholder">[e.g., Data encryption]</td>
+            <td class="placeholder">[e.g., AES-256 at rest]</td>
+        </tr>
+        <tr>
+            <td>Availability</td>
+            <td class="placeholder">[e.g., Uptime SLA]</td>
+            <td class="placeholder">[e.g., 99.9% uptime]</td>
+        </tr>
+        <tr>
+            <td>Accessibility</td>
+            <td class="placeholder">[e.g., WCAG compliance]</td>
+            <td class="placeholder">[e.g., WCAG 2.1 Level AA]</td>
+        </tr>
+    </table>
+
+    <h3>5.3 Out of Scope</h3>
+    <p><em>Explicitly define what is NOT included to manage expectations.</em></p>
+    <ul>
+        <li class="placeholder">[Feature or requirement explicitly not included]</li>
+        <li class="placeholder">[Another out-of-scope item]</li>
+        <li class="placeholder">[e.g., Mobile app support (web only for MVP)]</li>
+    </ul>
+
+    <h2>6. User Experience & Design</h2>
+    <p class="section-intro">Reference design assets and describe the user flow.</p>
+
+    <h3>6.1 User Flow</h3>
+    <p class="placeholder">[Describe the step-by-step journey a user takes to accomplish their goal. Include entry points, decision points, and exit points.]</p>
+
+    <h3>6.2 Wireframes/Mockups</h3>
+    <p class="placeholder">[Link to or describe key screens/interfaces. Attach Figma/Sketch files or insert images.]</p>
+
+    <h3>6.3 Content Requirements</h3>
+    <table class="requirements">
+        <tr>
+            <th>Element</th>
+            <th>Content</th>
+            <th>Notes</th>
+        </tr>
+        <tr>
+            <td class="placeholder">[e.g., Landing page headline]</td>
+            <td class="placeholder">[Draft copy or placeholder]</td>
+            <td class="placeholder">[Tone, character limits, etc.]</td>
+        </tr>
+        <tr>
+            <td class="placeholder">[e.g., Error message]</td>
+            <td class="placeholder">[Draft copy]</td>
+            <td class="placeholder">[Must be user-friendly]</td>
+        </tr>
+    </table>
+
+    <h2>7. Technical Considerations</h2>
+    <p class="section-intro">High-level technical approach and constraints.</p>
+
+    <h3>7.1 Architecture Overview</h3>
+    <p class="placeholder">[Describe the technical approach, key systems involved, integrations needed. Link to architecture diagrams if available.]</p>
+
+    <h3>7.2 Dependencies</h3>
+    <ul>
+        <li class="placeholder">[Dependency 1: e.g., API from Team X]</li>
+        <li class="placeholder">[Dependency 2: e.g., Third-party service]</li>
+        <li class="placeholder">[Dependency 3: e.g., Infrastructure from Project Y]</li>
+    </ul>
+
+    <h3>7.3 Risks & Mitigation</h3>
+    <table class="requirements">
+        <tr>
+            <th>Risk</th>
+            <th>Impact</th>
+            <th>Likelihood</th>
+            <th>Mitigation Strategy</th>
+        </tr>
+        <tr>
+            <td class="placeholder">[Describe risk]</td>
+            <td class="placeholder">[High/Med/Low]</td>
+            <td class="placeholder">[High/Med/Low]</td>
+            <td class="placeholder">[How to reduce impact]</td>
+        </tr>
+        <tr>
+            <td class="placeholder">[Describe risk]</td>
+            <td class="placeholder">[High/Med/Low]</td>
+            <td class="placeholder">[High/Med/Low]</td>
+            <td class="placeholder">[Mitigation approach]</td>
+        </tr>
+    </table>
+
+    <h2>8. Release Criteria</h2>
+    <p class="section-intro">What must be true for this to be considered ready for release?</p>
+    <ul>
+        <li class="placeholder">[Criterion 1: e.g., All P0 bugs resolved]</li>
+        <li class="placeholder">[Criterion 2: e.g., Performance benchmarks met]</li>
+        <li class="placeholder">[Criterion 3: e.g., Security review passed]</li>
+        <li class="placeholder">[Criterion 4: e.g., QA sign-off complete]</li>
+        <li class="placeholder">[Criterion 5: e.g., Documentation published]</li>
+    </ul>
+
+    <h2>9. Timeline & Milestones</h2>
+    <p class="section-intro">High-level schedule with key dates.</p>
+
+    <table class="requirements">
+        <tr>
+            <th>Phase</th>
+            <th>Description</th>
+            <th>Target Date</th>
+            <th>Owner</th>
+        </tr>
+        <tr>
+            <td>Discovery</td>
+            <td class="placeholder">[Research, requirements gathering]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+        </tr>
+        <tr>
+            <td>Design</td>
+            <td class="placeholder">[Wireframes, prototypes, user testing]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+        </tr>
+        <tr>
+            <td>Development</td>
+            <td class="placeholder">[Build and test]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+        </tr>
+        <tr>
+            <td>Beta Launch</td>
+            <td class="placeholder">[Limited release to test users]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+        </tr>
+        <tr>
+            <td>General Availability</td>
+            <td class="placeholder">[Full public release]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+        </tr>
+    </table>
+
+    <h2>10. Open Questions</h2>
+    <p class="section-intro">Questions that need answers before development begins.</p>
+    <table class="requirements">
+        <tr>
+            <th>Question</th>
+            <th>Assigned To</th>
+            <th>Due Date</th>
+            <th>Status</th>
+        </tr>
+        <tr>
+            <td class="placeholder">[What needs to be decided?]</td>
+            <td class="placeholder">[Name]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Open/Pending/Closed]</td>
+        </tr>
+        <tr>
+            <td class="placeholder">[Another question]</td>
+            <td class="placeholder">[Name]</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Open/Pending/Closed]</td>
+        </tr>
+    </table>
+
+    <h2>11. Appendix</h2>
+    <p class="section-intro">Supporting materials and references.</p>
+
+    <h3>11.1 References</h3>
+    <ul>
+        <li class="placeholder">[Link to research documents]</li>
+        <li class="placeholder">[Link to related PRDs]</li>
+        <li class="placeholder">[Link to technical documentation]</li>
+    </ul>
+
+    <h3>11.2 Glossary</h3>
+    <p class="placeholder">[Define acronyms, technical terms, or domain-specific language used in this document]</p>
+
+    <h3>11.3 Revision History</h3>
+    <table class="requirements">
+        <tr>
+            <th>Version</th>
+            <th>Date</th>
+            <th>Author</th>
+            <th>Changes</th>
+        </tr>
+        <tr>
+            <td>0.1</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+            <td class="placeholder">[Initial draft]</td>
+        </tr>
+        <tr>
+            <td>0.2</td>
+            <td class="placeholder">[MM/DD/YYYY]</td>
+            <td class="placeholder">[Name]</td>
+            <td class="placeholder">[Changes made]</td>
+        </tr>
+    </table>
+
+    <div class="highlight-box" style="margin-top: 30pt;">
+        <strong>Document Approval</strong>
+        <p style="margin-top: 10pt;">Sign-off indicates review and agreement with the requirements in this document.</p>
+        <table style="width: 100%; margin-top: 15pt;">
+            <tr>
+                <td style="padding: 20pt; border: 1pt solid #999; text-align: center;">
+                    <strong>Product Manager</strong><br><br>
+                    <span class="placeholder">[Signature]<br>[Date]</span>
+                </td>
+                <td style="padding: 20pt; border: 1pt solid #999; text-align: center;">
+                    <strong>Engineering Lead</strong><br><br>
+                    <span class="placeholder">[Signature]<br>[Date]</span>
+                </td>
+                <td style="padding: 20pt; border: 1pt solid #999; text-align: center;">
+                    <strong>Design Lead</strong><br><br>
+                    <span class="placeholder">[Signature]<br>[Date]</span>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+</body>
+</html>

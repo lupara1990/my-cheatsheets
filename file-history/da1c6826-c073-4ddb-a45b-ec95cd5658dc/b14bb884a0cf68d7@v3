@@ -1,0 +1,54 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll reveal
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.12 }
+    );
+
+    const selectors = [
+        '.hero-content', '.hero-image',
+        '.section-label',
+        '.feature-card',
+        '.preview-text', '.preview-image',
+        '.step',
+        '.cta-box'
+    ];
+
+    selectors.forEach((sel) => {
+        document.querySelectorAll(sel).forEach((el, i) => {
+            el.classList.add('reveal');
+            if (i > 0) el.classList.add(`reveal-d${Math.min(i, 5)}`);
+            observer.observe(el);
+        });
+    });
+
+    // Smooth scroll
+    document.querySelectorAll('a[href^="#"]').forEach((a) => {
+        a.addEventListener('click', (e) => {
+            const id = a.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Mobile menu
+    const btn = document.querySelector('.mobile-menu-btn');
+    const links = document.querySelector('.nav-links');
+    if (btn && links) {
+        btn.addEventListener('click', () => links.classList.toggle('open'));
+        links.querySelectorAll('a').forEach((a) =>
+            a.addEventListener('click', () => links.classList.remove('open'))
+        );
+    }
+});

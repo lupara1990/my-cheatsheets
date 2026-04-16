@@ -1,0 +1,63 @@
+document.addEventListener('DOMContentLoaded', () => {
+    // Scroll-reveal observer
+    const observer = new IntersectionObserver(
+        (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        },
+        { threshold: 0.15 }
+    );
+
+    // Tag elements for reveal
+    const revealTargets = [
+        '.hero-content', '.hero-image',
+        '.section-header',
+        '.feature-card',
+        '.preview-text', '.preview-image',
+        '.step-card',
+        '.cta-card'
+    ];
+
+    revealTargets.forEach((selector) => {
+        document.querySelectorAll(selector).forEach((el, i) => {
+            el.classList.add('reveal');
+            // Stagger cards within a group
+            if (i > 0) el.classList.add(`reveal-delay-${Math.min(i, 5)}`);
+            observer.observe(el);
+        });
+    });
+
+    // Smooth-scroll for anchor links (backup for browsers without CSS scroll-behavior)
+    document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener('click', (e) => {
+            const id = anchor.getAttribute('href');
+            if (id === '#') return;
+            const target = document.querySelector(id);
+            if (target) {
+                e.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    });
+
+    // Mobile menu toggle
+    const menuBtn = document.querySelector('.mobile-menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+
+    if (menuBtn && navLinks) {
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        // Close menu on link click
+        navLinks.querySelectorAll('a').forEach((link) => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+    }
+});

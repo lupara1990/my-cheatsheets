@@ -1,0 +1,8 @@
+{
+  "resource_pack_name": "backpack:backpack_textures",
+  "texture_data": {
+    "backpack": {
+      "textures": "textures/items/backpack"
+    }
+  }
+}

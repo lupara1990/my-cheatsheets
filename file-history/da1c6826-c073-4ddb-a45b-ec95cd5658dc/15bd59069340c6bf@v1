@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RetroSprint - Aesthetic Miro Retro Template</title>
+    <meta name="description" content="Elevate your team's retrospectives with RetroSprint. A stunning, synthwave-inspired Miro template designed for high-performance teams.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="glow-bg"></div>
+    
+    <nav>
+        <div class="logo">RetroSprint</div>
+        <div class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#preview">Preview</a>
+            <a href="#pricing">Pricing</a>
+            <a href="https://miro.com/" class="btn-secondary">Miro Login</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <span class="badge">New Template Release</span>
+            <h1>Retrospectives That <span class="gradient-text">Actually Feel Like Flow</span></h1>
+            <p>Ditch the boring whiteboards. RetroSprint brings a high-energy, synthwave aesthetic to your team's reflection sessions. Designed for Miro, built for speed.</p>
+            <div class="hero-actions">
+                <a href="#" class="btn-primary">Get the Template</a>
+                <a href="#preview" class="btn-outline">Watch Demo</a>
+            </div>
+            <div class="hero-social">
+                <span>Used by teams at</span>
+                <div class="logos">
+                    <!-- Placeholder for logos -->
+                    <span class="company">NEON-TECH</span>
+                    <span class="company">VOID-LABS</span>
+                    <span class="company">CYBER-CORP</span>
+                </div>
+            </div>
+        </div>
+        <div class="hero-image">
+            <div class="glass-card">
+                <img src="preview.png" alt="Miro Retro Template Preview" id="main-preview">
+            </div>
+        </div>
+    </header>
+
+    <section id="features" class="features">
+        <div class="section-header">
+            <h2>Designed for Modern Teams</h2>
+            <p>Everything you need for a productive, engaging retrospective.</p>
+        </div>
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="icon">⚡</div>
+                <h3>Quick Import</h3>
+                <p>One-click import into your Miro workspace. No complex setup required.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">🎨</div>
+                <h3>Aesthetic Design</h3>
+                <p>Consistent synthwave palette that makes retros fun and visually organized.</p>
+            </div>
+            <div class="feature-card">
+                <div class="icon">📈</div>
+                <h3>Structured Flow</h3>
+                <p>Pre-built zones for reflection, voting, and action items to keep you on track.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="preview" class="preview">
+        <div class="container">
+            <div class="preview-content">
+                <h2>Experience the Vibe</h2>
+                <p>Take a closer look at the sections designed to spark conversation and clarity.</p>
+                <ul class="check-list">
+                    <li>Custom Sticky Note styles</li>
+                    <li>Built-in Voting stations</li>
+                    <li>Actionable Insight tracker</li>
+                    <li>Interactive Icebreaker zones</li>
+                </ul>
+                <a href="#" class="btn-primary">Full Screen Preview</a>
+            </div>
+            <div class="preview-display">
+                <img src="preview.png" alt="Miro Template Detail">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">RetroSprint</div>
+            <p>&copy; 2026 RetroSprint. Built for Miro Enthusiasts.</p>
+            <div class="footer-socials">
+                <a href="#">Twitter</a>
+                <a href="#">ProductHunt</a>
+                <a href="#">Discord</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

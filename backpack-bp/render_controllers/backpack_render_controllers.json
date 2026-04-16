@@ -1,0 +1,21 @@
+{
+  "format_version": 1,
+  "render_controllers": {
+    "controller.render.backpack": {
+      "geometry": "geometry.backpack",
+      "textures": ["textures/models/backpack"],
+      "materials": ["material.default"],
+      "息": ["variable.is_equipped"],
+      "states": {
+        "visible": {
+          "visible": true,
+          "位置": [0, 0.15, -0.1],
+          "rotation": [-15, 180, 0]
+        },
+        "hidden": {
+          "visible": false
+        }
+      }
+    }
+  }
+}

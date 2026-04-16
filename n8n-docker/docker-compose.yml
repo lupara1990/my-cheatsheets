@@ -1,0 +1,37 @@
+version: "3.8"
+
+services:
+  n8n:
+    image: n8nio/n8n:latest
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_HOST=n8n.ayushmansen.com
+      - N8N_PROTOCOL=http
+      - WEBHOOK_URL=https://n8n.ayushmansen.com
+      - VUE_APP_URL_BASE_KEY=/n8n/
+      - N8N_PATH=/n8n/
+      - EXECUTIONS_MODE=regular
+      # Optional: set your own credentials
+      # - N8N_BASIC_AUTH_ACTIVE=true
+      # - N8N_BASIC_AUTH_USER=admin
+      # - N8N_BASIC_AUTH_PASSWORD=yourpassword
+    volumes:
+      - ./n8n_data:/home/node/.n8n
+
+  cloudflared:
+    image: cloudflare/cloudflared:latest
+    container_name: cloudflared
+    restart: always
+    environment:
+      - TUNNEL_NAME=n8n-tunnel
+      - TUNNEL_METRICS=0.0.0.0:9090
+      - TUNNEL_CRED_FILE=/etc/cloudflared/credentials.json
+      - TUNNEL_LOG_LEVEL=info
+      - TUNNEL_TRANSPORT=quic
+    volumes:
+      - ./cloudflared/config:/etc/cloudflared
+    ports:
+      - "127.0.0.1:9090:9090"

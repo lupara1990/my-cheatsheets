@@ -1,0 +1,45 @@
+{
+  "format_version": 1,
+  "minecraft:client_entity": {
+    "description": {
+      "identifier": "backpack:backpack_equipped",
+      "templates": ["geometry.backpack"]
+    },
+    "materials": {
+      "default": "entity"
+    },
+    "textures": {
+      "default": "textures/models/backpack"
+    },
+    "geometry": {
+      "default": "geometry.backpack"
+    },
+    "render_controllers": ["controller.render.backpack"],
+    "animations": {
+      "idle": "animation.backpack.idle",
+      "equip": "animation.backpack.equip"
+    },
+    "animation_controllers": [
+      {
+        "render.backpack": {
+          "initial_state": "hidden",
+          "states": {
+            "visible": {
+              "on_entry": [
+                "@this spawn_particle_effect{ effect: 'backpack:glint', lifetime: 999999 }"
+              ],
+              "properties": {
+                "visible": true
+              }
+            },
+            "hidden": {
+              "properties": {
+                "visible": false
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
