@@ -1,0 +1,1089 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ABM Campaign Cheatsheet</title>
+    <style>
+        :root {
+            --bg-primary: #0f172a;
+            --bg-secondary: #1e293b;
+            --bg-card: #1e293b;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --accent: #6366f1;
+            --accent-light: #818cf8;
+            --accent-glow: rgba(99, 102, 241, 0.3);
+            --border: #334155;
+            --success: #22c55e;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 0.75rem 2rem;
+        }
+
+        nav .nav-inner {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        nav .logo {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: var(--accent-light);
+            text-decoration: none;
+        }
+
+        nav .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        nav .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.2s;
+        }
+
+        nav .nav-links a:hover {
+            color: var(--accent-light);
+        }
+
+        /* Hero */
+        .hero {
+            padding: 8rem 2rem 4rem;
+            text-align: center;
+            background: radial-gradient(ellipse at top, rgba(99, 102, 241, 0.15) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--text-primary) 0%, var(--accent-light) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .subtitle {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .hero .badges {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Main Content */
+        main {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        section {
+            margin-bottom: 4rem;
+            scroll-margin-top: 5rem;
+        }
+
+        section h2 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        section h2 .section-icon {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .card h3 {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--accent-light);
+        }
+
+        /* Tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 1rem;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.9rem;
+        }
+
+        th, td {
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        th {
+            color: var(--text-secondary);
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        tr:hover {
+            background: rgba(99, 102, 241, 0.05);
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        /* Tier Cards */
+        .tier-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .tier-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: var(--accent);
+        }
+
+        .tier-card.tier-1::before { background: #6366f1; }
+        .tier-card.tier-few::before { background: #22c55e; }
+        .tier-card.tier-many::before { background: #f59e0b; }
+
+        .tier-card h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-card .tier-label {
+            font-size: 0.75rem;
+            color: var(--text-secondary);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 1rem;
+        }
+
+        .tier-card .tier-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.75rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .tier-card .stat {
+            font-size: 0.85rem;
+        }
+
+        .tier-card .stat-label {
+            color: var(--text-secondary);
+            font-size: 0.75rem;
+        }
+
+        .tier-card .stat-value {
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+
+        /* Process Steps */
+        .steps {
+            counter-reset: step;
+        }
+
+        .step {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Checklist */
+        .checklist {
+            list-style: none;
+        }
+
+        .checklist li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95rem;
+        }
+
+        .checklist li::before {
+            content: '';
+            width: 20px;
+            height: 20px;
+            border: 2px solid var(--accent);
+            border-radius: 4px;
+            flex-shrink: 0;
+        }
+
+        /* Alert Boxes */
+        .alert {
+            padding: 1rem 1.25rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .alert-warning {
+            background: rgba(245, 158, 11, 0.1);
+            border-left: 3px solid var(--warning);
+            color: var(--warning);
+        }
+
+        .alert-danger {
+            background: rgba(239, 68, 68, 0.1);
+            border-left: 3px solid var(--danger);
+            color: var(--danger);
+        }
+
+        .alert-success {
+            background: rgba(34, 197, 94, 0.1);
+            border-left: 3px solid var(--success);
+            color: var(--success);
+        }
+
+        /* Role Cards */
+        .role-category {
+            margin-bottom: 2rem;
+        }
+
+        .role-category h3 {
+            font-size: 1rem;
+            color: var(--accent-light);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 0.75rem;
+        }
+
+        .role-item {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            padding: 1rem;
+        }
+
+        .role-item .role-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .role-item .role-desc {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+        }
+
+        /* Tech Stack */
+        .tech-category {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.25rem;
+        }
+
+        .tech-category h4 {
+            font-size: 0.85rem;
+            color: var(--accent-light);
+            margin-bottom: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .tech-category ul {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-category li {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border);
+            padding: 0.4rem 0.8rem;
+            border-radius: 4px;
+            font-size: 0.85rem;
+        }
+
+        /* Timeline */
+        .timeline-item {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 30px;
+            bottom: -1.5rem;
+            width: 2px;
+            background: var(--border);
+        }
+
+        .timeline-item:last-child::before {
+            display: none;
+        }
+
+        .timeline-dot {
+            width: 32px;
+            height: 32px;
+            background: var(--accent);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 700;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h4 {
+            font-size: 0.95rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .timeline-content p {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .timeline-content .months {
+            font-size: 0.75rem;
+            color: var(--accent-light);
+            margin-bottom: 0.25rem;
+        }
+
+        /* Sources */
+        .sources {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .sources h3 {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .sources ul {
+            list-style: none;
+            display: grid;
+            gap: 0.75rem;
+        }
+
+        .sources a {
+            color: var(--accent-light);
+            text-decoration: none;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .sources a:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0.75rem 1rem;
+            }
+
+            nav .nav-links {
+                gap: 1rem;
+                font-size: 0.8rem;
+            }
+
+            .hero {
+                padding: 6rem 1rem 3rem;
+            }
+
+            main {
+                padding: 1rem;
+            }
+
+            .grid-2, .grid-3 {
+                grid-template-columns: 1fr;
+            }
+
+            .tier-card .tier-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .role-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="nav-inner">
+            <a href="#" class="logo">ABM Cheatsheet</a>
+            <div class="nav-links">
+                <a href="#terms">Terms</a>
+                <a href="#tiers">Tiers</a>
+                <a href="#process">Process</a>
+                <a href="#roles">Roles</a>
+                <a href="#metrics">Metrics</a>
+                <a href="#failures">Failures</a>
+                <a href="#stack">Tech Stack</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <h1>ABM Campaign Cheatsheet</h1>
+        <p class="subtitle">Your comprehensive guide to Account-Based Marketing — terms, tiers, processes, team roles, and best practices.</p>
+        <div class="badges">
+            <span class="badge">2026 Edition</span>
+            <span class="badge">B2B Strategy</span>
+            <span class="badge">Actionable</span>
+        </div>
+    </header>
+
+    <main>
+        <!-- Key Terms -->
+        <section id="terms">
+            <h2><span class="section-icon">T</span> Key Terms & Glossary</h2>
+            <div class="table-wrapper card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Term</th>
+                            <th>Definition</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>ABM</strong></td><td>Account-Based Marketing — targets specific high-value accounts rather than broad audiences</td></tr>
+                        <tr><td><strong>1:1 ABM</strong></td><td>One marketer/sales rep per target account (10–50 accounts, $500K+ deals)</td></tr>
+                        <tr><td><strong>1:Few ABM</strong></td><td>A team manages a cohort of similar accounts (50–500 accounts)</td></tr>
+                        <tr><td><strong>1:Many ABM</strong></td><td>Programmatic, scale-based targeting (500+ accounts)</td></tr>
+                        <tr><td><strong>ACV</strong></td><td>Annual Contract Value — annual revenue from a customer contract</td></tr>
+                        <tr><td><strong>ARR</strong></td><td>Annual Recurring Revenue</td></tr>
+                        <tr><td><strong>ICP</strong></td><td>Ideal Customer Profile — characteristics of your best-fit customer</td></tr>
+                        <tr><td><strong>Buying Committee</strong></td><td>Group of stakeholders involved in a purchase decision (typically 6–10 people)</td></tr>
+                        <tr><td><strong>Intent Data</strong></td><td>Signals indicating a prospect is actively researching a solution</td></tr>
+                        <tr><td><strong>FIRE Score</strong></td><td>Fit + Intent + Recency + Engagement scoring model for account prioritization</td></tr>
+                        <tr><td><strong>SDR/BDR</strong></td><td>Sales Development Rep / Business Development Rep</td></tr>
+                        <tr><td><strong>RevOps</strong></td><td>Revenue Operations — cross-functional alignment of sales, marketing, and CS</td></tr>
+                        <tr><td><strong>Touchpoint</strong></td><td>Any interaction a prospect has with your brand</td></tr>
+                        <tr><td><strong>MQL</strong></td><td>Marketing Qualified Lead</td></tr>
+                        <tr><td><strong>SQL</strong></td><td>Sales Qualified Lead</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- ABM Tiers -->
+        <section id="tiers">
+            <h2><span class="section-icon">3</span> The 3 ABM Tiers</h2>
+            <div class="alert alert-warning">
+                <strong>Rule of thumb:</strong> ABM pencil out for deals $30K–$50K+ ACV. Don't run all three tiers simultaneously — start with one.
+            </div>
+            <div class="grid-3">
+                <div class="tier-card tier-1">
+                    <h3>1:1 Strategic</h3>
+                    <div class="tier-label">Enterprise Tier</div>
+                    <p>One-on-one engagement for your most valuable accounts. Deep personalization, dedicated resources.</p>
+                    <div class="tier-stats">
+                        <div class="stat">
+                            <div class="stat-label">Accounts</div>
+                            <div class="stat-value">10–50</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Deal Size</div>
+                            <div class="stat-value">$500K+</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Budget</div>
+                            <div class="stat-value">$500K+</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Use For</div>
+                            <div class="stat-value">Enterprise</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tier-card tier-few">
+                    <h3>1:Few ABM Lite</h3>
+                    <div class="tier-label">Mid-Market Tier</div>
+                    <p>Team manages cohorts of similar accounts with grouped personalization and shared playbooks.</p>
+                    <div class="tier-stats">
+                        <div class="stat">
+                            <div class="stat-label">Accounts</div>
+                            <div class="stat-value">50–500</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Deal Size</div>
+                            <div class="stat-value">$50K–$500K</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Budget</div>
+                            <div class="stat-value">$150K–$500K</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Use For</div>
+                            <div class="stat-value">Mid-Market</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tier-card tier-many">
+                    <h3>1:Many Programmatic</h3>
+                    <div class="tier-label">Scale Tier</div>
+                    <p>Programmatic targeting at scale using intent signals and automated personalization.</p>
+                    <div class="tier-stats">
+                        <div class="stat">
+                            <div class="stat-label">Accounts</div>
+                            <div class="stat-value">500+</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Deal Size</div>
+                            <div class="stat-value">Any</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Budget</div>
+                            <div class="stat-value">$10K–$100K</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-label">Use For</div>
+                            <div class="stat-value">Broad Reach</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7-Step Process -->
+        <section id="process">
+            <h2><span class="section-icon">7</span> The 7-Step ABM Process</h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h4>Build Your ICP & Scoring Model</h4>
+                        <p>Define firmographics, technographics, and behavioral signals that indicate a good-fit account.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h4>Identify & Score Target Accounts</h4>
+                        <p>Use FIRE scoring: Fit + Intent + Recency + Engagement to prioritize accounts.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h4>Map the Buying Committee</h4>
+                        <p>Identify all 6–10 stakeholders per account and their roles, concerns, and influence.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h4>Segment & Personalize</h4>
+                        <p>Tailor messaging by persona, vertical, and lifecycle stage for each account cohort.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h4>Execute Multi-Channel Campaigns</h4>
+                        <p>Run coordinated campaigns across ads, email, direct mail, social, and events.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">6</div>
+                    <div class="step-content">
+                        <h4>Align Sales for Engagement</h4>
+                        <p>Arm reps with account intel and personalized playbooks for targeted outreach.</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">7</div>
+                    <div class="step-content">
+                        <h4>Measure Account-Level Impact</h4>
+                        <p>Track engagement progression and pipeline at the account level — not just MQLs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Buying Committee -->
+        <section id="buying-committee">
+            <h2><span class="section-icon">B</span> Buying Committee Roles</h2>
+            <p style="color: var(--text-secondary); margin-bottom: 1rem;">Typically 6–10 stakeholders per account. Know who you're talking to.</p>
+            <div class="table-wrapper card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Role</th>
+                            <th>What They Care About</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Economic Buyer</strong></td><td>ROI, budget approval, business outcomes</td></tr>
+                        <tr><td><strong>Technical Buyer</strong></td><td>Integration, security, feasibility</td></tr>
+                        <tr><td><strong>User Champion</strong></td><td>Ease of use, productivity gains, internal advocacy</td></tr>
+                        <tr><td><strong>Legal/Compliance</strong></td><td>Contracts, risk, compliance requirements</td></tr>
+                        <tr><td><strong>C-Suite Executive</strong></td><td>Strategic vision, competitive advantage</td></tr>
+                        <tr><td><strong>End User</strong></td><td>Day-to-day usability, workflow fit</td></tr>
+                        <tr><td><strong>Security Analyst</strong></td><td>Data protection, certifications</td></tr>
+                        <tr><td><strong>Finance Buyer</strong></td><td>Cost optimization, payment terms</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Team Roles -->
+        <section id="roles">
+            <h2><span class="section-icon">R</span> Team Roles & Responsibilities</h2>
+            <div class="grid-2">
+                <div class="role-category card">
+                    <h3>Leadership</h3>
+                    <div class="role-grid">
+                        <div class="role-item">
+                            <div class="role-name">CMO</div>
+                            <div class="role-desc">Strategic direction, resource allocation, sales-marketing alignment</div>
+                        </div>
+                        <div class="role-item">
+                            <div class="role-name">CRO</div>
+                            <div class="role-desc">Revenue alignment, budget ownership, ROI measurement</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="role-category card">
+                    <h3>Strategy & Management</h3>
+                    <div class="role-grid">
+                        <div class="role-item">
+                            <div class="role-name">ABM Director/Manager</div>
+                            <div class="role-desc">Campaign orchestration, cross-functional coordination</div>
+                        </div>
+                        <div class="role-item">
+                            <div class="role-name">Marketing Manager</div>
+                            <div class="role-desc">Messaging, creatives, channel execution</div>
+                        </div>
+                        <div class="role-item">
+                            <div class="role-name">Sales Manager</div>
+                            <div class="role-desc">Account identification, personalized outreach</div>
+                        </div>
+                        <div class="role-item">
+                            <div class="role-name">Operations Manager</div>
+                            <div class="role-desc">Budget, tracking systems, reporting</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card" style="margin-top: 1rem;">
+                <h3>Execution Layer</h3>
+                <div class="grid-3" style="margin-top: 1rem;">
+                    <div class="role-item">
+                        <div class="role-name">Account Executives</div>
+                        <div class="role-desc">Direct relationships, personalized experiences</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Content Strategists</div>
+                        <div class="role-desc">Tailored content by persona and stage</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Performance Marketers</div>
+                        <div class="role-desc">Paid ads, optimization</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Copywriters</div>
+                        <div class="role-desc">Campaign copy, email sequences</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Graphic Designers</div>
+                        <div class="role-desc">Visual assets, landing pages</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Social Media Marketers</div>
+                        <div class="role-desc">LinkedIn/social engagement</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Marketing Ops</div>
+                        <div class="role-desc">CRM, automation, data quality</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Data Analysts</div>
+                        <div class="role-desc">Account insights, engagement metrics</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">SDR/BDR</div>
+                        <div class="role-desc">Prospecting, account outreach</div>
+                    </div>
+                    <div class="role-item">
+                        <div class="role-name">Customer Success</div>
+                        <div class="role-desc">Post-sale health, upsell opportunities</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Key Metrics -->
+        <section id="metrics">
+            <h2><span class="section-icon">M</span> Key Metrics & KPIs</h2>
+            <div class="alert alert-danger">
+                <strong>Warning:</strong> 79% of orgs run ABM but only 29% measure with ABM-aligned metrics. Don't measure ABM with MQLs.
+            </div>
+            <div class="table-wrapper card">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>Why It Matters</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Account Engagement Score</strong></td><td>Tracks target account interactions over time</td></tr>
+                        <tr><td><strong># of Target Accounts Engaged</strong></td><td>Are the right accounts interacting?</td></tr>
+                        <tr><td><strong>Stakeholder Coverage</strong></td><td>How many buying committee members are reached?</td></tr>
+                        <tr><td><strong>Pipeline Created (Account-Level)</strong></td><td>Revenue impact per account</td></tr>
+                        <tr><td><strong>Deal Velocity</strong></td><td>How fast deals move through stages</td></tr>
+                        <tr><td><strong>Win Rate on Target Accounts</strong></td><td>Quality of targeting</td></tr>
+                        <tr><td><strong>Avg Deal Size (ABM vs Non-ABM)</strong></td><td>Prove ABM premium</td></tr>
+                        <tr><td><strong>Time to First Engagement</strong></td><td>Are sales activating quickly enough?</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Common Failures -->
+        <section id="failures">
+            <h2><span class="section-icon">!</span> Common ABM Failure Modes</h2>
+            <div class="grid-2">
+                <div class="card">
+                    <h3>Failure</h3>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem;">Targeting too broadly</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">Bad contact data</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">Measuring MQLs instead of account progression</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">Treating ABM as a campaign</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">No sales-marketing alignment</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">Ignoring intent signals</p>
+                    <p style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.75rem;">Running all 3 tiers at once</p>
+                </div>
+                <div class="card">
+                    <h3>Solution</h3>
+                    <p style="font-size: 0.9rem;">Start with 5–25 accounts, not 500</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">Invest in data enrichment (ZoomInfo, Clearbit)</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">Track account-level engagement, not leads</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">It's an operating system, not a one-off campaign</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">Weekly syncs, shared metrics, joint account selection</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">Use tools like 6sense, Bombora for real-time signals</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.75rem;">Master one tier before scaling</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Timeline & Budget -->
+        <section id="timeline">
+            <h2><span class="section-icon">T</span> Timeline & Budget</h2>
+            <div class="timeline-item">
+                <div class="timeline-dot">1</div>
+                <div class="timeline-content">
+                    <div class="months">Months 1–2</div>
+                    <h4>Pilot Start</h4>
+                    <p>Select 5–25 accounts, build foundational content</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">2</div>
+                <div class="timeline-content">
+                    <div class="months">Months 2–3</div>
+                    <h4>Early Engagement</h4>
+                    <p>First touchpoints, sales alignment, intent monitoring</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">3</div>
+                <div class="timeline-content">
+                    <div class="months">Months 3–6</div>
+                    <h4>Pipeline Impact</h4>
+                    <p>Engagement signals appear (~60 days)</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">4</div>
+                <div class="timeline-content">
+                    <div class="months">Months 6–9</div>
+                    <h4>Full Pipeline</h4>
+                    <p>Qualified opportunities, deal cycle progresses</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-dot">5</div>
+                <div class="timeline-content">
+                    <div class="months">Months 6–18</div>
+                    <h4>Revenue Impact</h4>
+                    <p>Closed-won results (realistic: 90–180 days to pipeline)</p>
+                </div>
+            </div>
+
+            <div class="card" style="margin-top: 2rem;">
+                <h3>Budget Brackets</h3>
+                <div class="table-wrapper">
+                    <table>
+                        <thead>
+                            <tr><th>Program Type</th><th>Budget Range</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Pilot Programs</td><td>$40K – $150K</td></tr>
+                            <tr><td>Mid-Market Retainers</td><td>$5K – $25K/month</td></tr>
+                            <tr><td>Enterprise Programs</td><td>$25K – $100K+/month</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tech Stack -->
+        <section id="stack">
+            <h2><span class="section-icon">S</span> Starter Tech Stack</h2>
+            <div class="grid-3">
+                <div class="tech-category">
+                    <h4>Intent Data</h4>
+                    <ul>
+                        <li>6sense</li>
+                        <li>Bombora</li>
+                        <li>Kickfire</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>CRM</h4>
+                    <ul>
+                        <li>HubSpot</li>
+                        <li>Salesforce</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>ABM Platforms</h4>
+                    <ul>
+                        <li>Terminus</li>
+                        <li>Demandbase</li>
+                        <li>6sense</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Data Enrichment</h4>
+                    <ul>
+                        <li>ZoomInfo</li>
+                        <li>Clearbit</li>
+                        <li>Apollo</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Email Sequencing</h4>
+                    <ul>
+                        <li>Outreach</li>
+                        <li>Salesloft</li>
+                        <li>Apollo</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Paid Media</h4>
+                    <ul>
+                        <li>LinkedIn Ads</li>
+                        <li>StackAdapt</li>
+                        <li>Display DSP</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Direct Mail</h4>
+                    <ul>
+                        <li>Sendoso</li>
+                        <li>Letterjack</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Content Personalization</h4>
+                    <ul>
+                        <li>Uberflip</li>
+                        <li>Pathfactory</li>
+                    </ul>
+                </div>
+                <div class="tech-category">
+                    <h4>Analytics</h4>
+                    <ul>
+                        <li>Bizible</li>
+                        <li>LeanData</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Readiness Checklist -->
+        <section id="checklist">
+            <h2><span class="section-icon">C</span> ABM Readiness Checklist</h2>
+            <div class="card">
+                <p style="color: var(--text-secondary); margin-bottom: 1rem;">Before launching, confirm these 5 thresholds:</p>
+                <ul class="checklist">
+                    <li>ACV is $30K–$50K+ (ABM pencils out)</li>
+                    <li>Sales and marketing agree on target accounts</li>
+                    <li>CRM data is clean and enriched</li>
+                    <li>Content exists for key personas/stages</li>
+                    <li>You have buy-in from sales leadership</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Sources -->
+        <section id="sources">
+            <h2><span class="section-icon">S</span> Sources</h2>
+            <div class="sources">
+                <ul>
+                    <li><a href="https://techbullion.com/top-10-account-based-marketing-agencies-for-b2b-in-2026/" target="_blank">Top 10 ABM Agencies for B2B in 2026 — TechBullion</a></li>
+                    <li><a href="https://prospeo.io/s/abm-playbook" target="_blank">ABM Playbook: Step-by-Step Operational Guide (2026)</a></li>
+                    <li><a href="https://prospeo.io/s/abm-best-practices" target="_blank">ABM Best Practices: The 2026 Practitioner's Playbook</a></li>
+                    <li><a href="https://prospeo.io/s/account-based-marketing-process" target="_blank">Account Based Marketing Process: 7-Step Guide (2026)</a></li>
+                    <li><a href="https://prospeo.io/s/account-based-marketing" target="_blank">Account Based Marketing: 2026 Practitioner's Guide</a></li>
+                    <li><a href="https://www.newbreedrevenue.com/blog/demystifying-abm-roles-responsibilities" target="_blank">Demystifying ABM: Mapping Out Roles & Responsibilities — New Breed</a></li>
+                    <li><a href="https://www.cmoalliance.com/your-guide-to-abm-team-structure-success" target="_blank">The Right Way to Structure an ABM Team — CMO Alliance</a></li>
+                    <li><a href="https://6sense.com/guides/abm-manager/team-org-chart/" target="_blank">ABM Team Structure | Org Chart & Roles — 6sense</a></li>
+                    <li><a href="https://www.factors.ai/blog/account-based-marketing-team-structure" target="_blank">Account-Based Marketing Team Structure — Factors.ai</a></li>
+                    <li><a href="https://www.demandmetric.com/content/abm-roles-matrix" target="_blank">ABM Roles Matrix — Demand Metric</a></li>
+                </ul>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>ABM Campaign Cheatsheet &mdash; 2026 Edition &mdash; Open in browser to navigate</p>
+    </footer>
+</body>
+</html>
