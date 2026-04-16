@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ComfyUI Complete Guide</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        @media print {
+            body {
+                padding: 20px;
+            }
+            .page-break {
+                page-break-before: always;
+            }
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 32px;
+            border-bottom: 3px solid #3498db;
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            margin-top: 40px;
+        }
+
+        h2 {
+            color: #34495e;
+            font-size: 24px;
+            margin-top: 35px;
+            margin-bottom: 20px;
+            border-left: 5px solid #3498db;
+            padding-left: 15px;
+        }
+
+        h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 12px;
+        }
+
+        .cover {
+            text-align: center;
+            padding: 80px 0;
+            page-break-after: always;
+        }
+
+        .cover h1 {
+            font-size: 48px;
+            border: none;
+            margin-bottom: 20px;
+        }
+
+        .cover .subtitle {
+            font-size: 22px;
+            color: #7f8c8d;
+            margin-bottom: 40px;
+        }
+
+        .cover .description {
+            font-size: 16px;
+            color: #95a5a6;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            font-size: 14px;
+        }
+
+        th {
+            background: #3498db;
+            color: white;
+            padding: 12px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px 12px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:nth-child(even) {
+            background: #f8f9fa;
+        }
+
+        tr:hover {
+            background: #e8f4f8;
+        }
+
+        .node-name {
+            font-weight: 600;
+            color: #2980b9;
+        }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            color: #c0392b;
+        }
+
+        .code-block {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        .flow-diagram {
+            background: #e8f6f3;
+            border: 2px solid #1abc9c;
+            border-radius: 5px;
+            padding: 15px;
+            margin: 15px 0;
+            font-family: 'Consolas', monospace;
+            font-size: 13px;
+            text-align: center;
+        }
+
+        ul, ol {
+            margin: 15px 0 15px 30px;
+        }
+
+        li {
+            margin: 8px 0;
+        }
+
+        .tip {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .tip strong {
+            color: #856404;
+        }
+
+        .recommendation {
+            background: #d1ecf1;
+            border-left: 5px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+
+        .recommendation strong {
+            color: #0c5460;
+        }
+
+        .highlight-box {
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+            border-radius: 5px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+
+        .step-number {
+            display: inline-block;
+            background: #3498db;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+
+        .divider {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, #3498db, #2ecc71);
+            margin: 40px 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cover Page -->
+    <div class="cover">
+        <h1>🎨 ComfyUI Complete Guide</h1>
+        <p class="subtitle">From Basics to Midjourney-Quality Results</p>
+        <p class="description">A Comprehensive Cheatsheet & Setup Guide</p>
+        <p style="margin-top: 60px; color: #bdc3c7;">April 2026</p>
+    </div>
+
+    <!-- PART A -->
+    <h1>PART A: ComfyUI Cheatsheet</h1>
+    <p style="font-size: 18px; color: #7f8c8d; margin-bottom: 30px;">Essential Nodes & Concepts</p>
+
+    <h2>Core Nodes You Need to Know</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Node</th>
+                <th>Purpose</th>
+                <th>Key Parameters</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="node-name">Load Checkpoint</td>
+                <td>Loads your base model (SD 1.5, SDXL, SD3, Flux)</td>
+                <td><code>ckpt_name</code> - select your .safetensors file</td>
+            </tr>
+            <tr>
+                <td class="node-name">Load LoRA</td>
+                <td>Applies LoRA weights to your model</td>
+                <td><code>lora_name</code>, <code>strength_model</code>, <code>strength_clip</code></td>
+            </tr>
+            <tr>
+                <td class="node-name">CLIP Text Encode</td>
+                <td>Converts text prompts into embeddings</td>
+                <td>Positive and negative prompt inputs</td>
+            </tr>
+            <tr>
+                <td class="node-name">Empty Latent Image</td>
+                <td>Creates the initial noise canvas</td>
+                <td><code>width</code>, <code>height</code>, <code>batch_size</code></td>
+            </tr>
+            <tr>
+                <td class="node-name">KSampler</td>
+                <td>The actual diffusion sampling process</td>
+                <td><code>seed</code>, <code>steps</code>, <code>cfg</code>, <code>sampler_name</code></td>
+            </tr>
+            <tr>
+                <td class="node-name">VAEDecode</td>
+                <td>Converts latent space to pixel image</td>
+                <td>VAE + latent input</td>
+            </tr>
+            <tr>
+                <td class="node-name">VAEEncode</td>
+                <td>Converts image to latent space (img2img)</td>
+                <td>VAE + pixel image input</td>
+            </tr>
+            <tr>
+                <td class="node-name">Save Image</td>
+                <td>Outputs your final image</td>
+                <td><code>filename_prefix</code></td>
+            </tr>
+            <tr>
+                <td class="node-name">Load Image</td>
+                <td>Loads images for img2img/inpainting</td>
+                <td><code>image</code> file upload</td>
+            </tr>
+            <tr>
+                <td class="node-name">Upscale Model Loader</td>
+                <td>Loads ESRGAN/RealESRGAN upscalers</td>
+                <td><code>model_name</code></td>
+            </tr>
+            <tr>
+                <td class="node-name">ImageUpscaleWithModel</td>
+                <td>Applies upscale model to image</td>
+                <td>Upscale model + image</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Advanced/Must-Know Nodes</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Node</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="node-name">ControlNet Apply</td>
+                <td>Applies ControlNet conditioning (depth, pose, canny, etc.)</td>
+            </tr>
+            <tr>
+                <td class="node-name">IPAdapter Apply</td>
+                <td>Style/face transfer from reference images</td>
+            </tr>
+            <tr>
+                <td class="node-name">Conditioning (Set Mask)</td>
+                <td>For inpainting - masks where to regenerate</td>
+            </tr>
+            <tr>
+                <td class="node-name">Latent Composite</td>
+                <td>Combines multiple latent images</td>
+            </tr>
+            <tr>
+                <td class="node-name">Reroute</td>
+                <td>Organizes noodles - aesthetic + organizational</td>
+            </tr>
+            <tr>
+                <td class="node-name">Primitive</td>
+                <td>Exposes parameters for easy tweaking</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Key Concepts</h2>
+
+    <h3>1. The Basic Flow (Text2Img)</h3>
+    <div class="flow-diagram">
+Load Checkpoint → CLIP Encode (prompt) → Empty Latent → KSampler → VAEDecode → Save Image
+    </div>
+
+    <h3>2. Understanding KSampler Parameters</h3>
+    <ul>
+        <li><strong>Seed:</strong> Random seed for reproducibility (-1 = random)</li>
+        <li><strong>Steps:</strong> 20-30 is standard, 30-50 for quality, 4-8 for fast samplers</li>
+        <li><strong>CFG (Classifier Free Guidance):</strong> 7-8 is default. Higher = more prompt adherence but can over-saturate</li>
+        <li><strong>Sampler:</strong> <code>dpmpp_2m</code>, <code>dpmpp_sde</code>, <code>euler</code>, <code>euler_ancestral</code> are most popular</li>
+        <li><strong>Scheduler:</strong> <code>normal</code>, <code>karras</code>, <code>exponential</code>. Karras is generally best</li>
+    </ul>
+
+    <h3>3. Latent Space</h3>
+    <ul>
+        <li>Images are generated in compressed latent space (typically 64x64 or 128x128)</li>
+        <li><strong>SD 1.5 latent:</strong> 512×512 → 64×64 (8x compression)</li>
+        <li><strong>SDXL latent:</strong> 1024×1024 → 128×128</li>
+        <li><strong>Flux:</strong> 1024×1024 → use specific Flux VAE</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <!-- PART B -->
+    <h1>PART B: Midjourney-Quality Setup Guide</h1>
+
+    <h2>Step 1: Model Selection (Critical for Quality)</h2>
+
+    <p style="margin-bottom: 15px;">Best Checkpoint Options for Midjourney-like Quality:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Model</th>
+                <th>Type</th>
+                <th>Best For</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="node-name">Juggernaut XL</td>
+                <td>SDXL</td>
+                <td>Photorealism, versatility</td>
+            </tr>
+            <tr>
+                <td class="node-name">RealVisXL</td>
+                <td>SDXL</td>
+                <td>Photorealistic portraits</td>
+            </tr>
+            <tr>
+                <td class="node-name">ProtoVision XL</td>
+                <td>SDXL</td>
+                <td>Artistic, painterly styles</td>
+            </tr>
+            <tr>
+                <td class="node-name">Flux.1 Dev</td>
+                <td>Flux</td>
+                <td>Current SOTA quality</td>
+            </tr>
+            <tr>
+                <td class="node-name">Flux.1 Schnell</td>
+                <td>Flux</td>
+                <td>Fast, local generation</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="recommendation">
+        <strong>💡 Recommended:</strong> Flux.1 Dev or Juggernaut XL v9 for best Midjourney alternatives.
+    </div>
+
+    <h2>Step 2: Essential Downloads</h2>
+
+    <div class="code-block"># 1. Install ComfyUI
+git clone https://github.com/comfyanonymous/ComfyUI.git
+cd ComfyUI
+pip install -r requirements.txt
+
+# 2. Model paths structure:
+# Checkpoints -> ComfyUI/models/checkpoints/
+# LoRAs -> ComfyUI/models/loras/
+# VAEs -> ComfyUI/models/vae/
+# ControlNet -> ComfyUI/models/controlnet/
+# Upscalers -> ComfyUI/models/upscale_models/</div>
+
+    <h2>Step 3: Recommended Supporting Models</h2>
+
+    <h3>VAEs</h3>
+    <ul>
+        <li><strong>SDXL:</strong> sdxl_vae.safetensors</li>
+        <li><strong>SD 1.5:</strong> vae-ft-mse-840000-ema-pruned.ckpt</li>
+        <li><strong>Flux:</strong> ae.safetensors (comes with Flux)</li>
+    </ul>
+
+    <h3>Upscalers</h3>
+    <ul>
+        <li>4x-UltraSharp.pth</li>
+        <li>4x-RealResRGAN.pth</li>
+        <li>4x_NMKD-Superscale-SP_178000_G.pth</li>
+    </ul>
+
+    <h3>ControlNets (for precision)</h3>
+    <ul>
+        <li>controlnet-canny-sdxl</li>
+        <li>controlnet-depth-sdxl</li>
+        <li>controlnet-openpose</li>
+    </ul>
+
+    <div class="page-break"></div>
+
+    <h2>Step 4: The "90% Midjourney" Workflow</h2>
+
+    <p style="margin-bottom: 20px;">Node-by-Node Setup for Best Quality:</p>
+
+    <div class="highlight-box">
+        <p><span class="step-number">1</span><strong>Load Checkpoint</strong> [Juggernaut XL v9 or Flux Dev]</p>
+        <p style="margin-left: 40px; color: #666;">Connect to KSampler and CLIP Text Encode</p>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">2</span><strong>CLIP Text Encode (Positive)</strong></p>
+        <div class="code-block" style="margin: 10px 0; font-size: 12px;">masterpiece, best quality, cinematic lighting, 8k uhd, dslr, film grain, Fujifilm XT3, [your subject]</div>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">3</span><strong>CLIP Text Encode (Negative)</strong></p>
+        <div class="code-block" style="margin: 10px 0; font-size: 11px;">(worst quality:1.4), (low quality:1.4), (normal quality:1.4), lowres, bad anatomy, bad hands, text, error, missing fingers, extra digit, fewer digits, cropped, jpeg artifacts, signature, watermark, username, blurry, artist name</div>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">4</span><strong>Empty Latent Image</strong></p>
+        <ul>
+            <li><strong>Width:</strong> 1024 (SDXL/Flux) or 512 (SD 1.5)</li>
+            <li><strong>Height:</strong> 1024 or 768 (portrait) or 1344 (landscape)</li>
+            <li><strong>Batch Size:</strong> 1-4</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">5</span><strong>KSampler</strong> [CONNECTED HERE]</p>
+        <table style="margin-top: 10px; font-size: 13px;">
+            <tr><td><strong>Seed:</strong></td><td>-1 (or fixed for consistency)</td></tr>
+            <tr><td><strong>Steps:</strong></td><td>30-40 (SDXL), 4-8 (Flux)</td></tr>
+            <tr><td><strong>CFG:</strong></td><td>6-8 (SDXL), 1-3 (Flux)</td></tr>
+            <tr><td><strong>Sampler:</strong></td><td>dpmpp_2m_sde (SDXL) or euler (Flux)</td></tr>
+            <tr><td><strong>Scheduler:</strong></td><td>karras (SDXL)</td></tr>
+            <tr><td><strong>Denoise:</strong></td><td>1.0 (full generation)</td></tr>
+        </table>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">6</span><strong>VAEDecode</strong> → Save Image</p>
+    </div>
+
+    <div class="highlight-box">
+        <p><span class="step-number">7</span><strong>[Optional] Upscale</strong></p>
+        <p style="margin-left: 40px;">Load Upscale Model → ImageUpscaleWithModel → Save Image</p>
+    </div>
+
+    <h2>Step 5: Prompting Like Midjourney</h2>
+
+    <h3>Midjourney-Style Prompt Structure</h3>
+    <div class="code-block">[Quality tags], [Subject], [Action/Pose], [Environment/Background], [Lighting], [Camera/Style], [Artist/Medium]</div>
+
+    <h3>Example Prompt</h3>
+    <div class="code-block">masterpiece, best quality, 8k uhd, cinematic film still, portrait of a cyberpunk samurai, neon-lit street in Tokyo, heavy rain, volumetric fog, red and blue neon lights reflecting on wet armor, shallow depth of field, bokeh, shot on Arri Alexa 35, anamorphic lens flare, film grain, color graded teal and orange</div>
+
+    <h3>Key Midjourney-Style Keywords</h3>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Keywords</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><strong>Cinematic/Film</strong></td>
+                <td><code>cinematic</code>, <code>film still</code>, <code>movie still</code>, <code>bokeh</code>, <code>depth of field</code></td>
+            </tr>
+            <tr>
+                <td><strong>Lighting</strong></td>
+                <td><code>golden hour</code>, <code>blue hour</code>, <code>volumetric lighting</code>, <code>god rays</code></td>
+            </tr>
+            <tr>
+                <td><strong>Camera/Film Stock</strong></td>
+                <td><code>35mm</code>, <code>medium format</code>, <code>Kodak Portra</code>, <code>Fujifilm</code></td>
+            </tr>
+            <tr>
+                <td><strong>Lens Effects</strong></td>
+                <td><code>anamorphic</code>, <code>lens flare</code>, <code>chromatic aberration</code></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="page-break"></div>
+
+    <h2>Step 6: Getting Even Closer to Midjourney</h2>
+
+    <h3>Option 1: Use MJ-Style LoRAs</h3>
+    <ul>
+        <li>Download "Midjourney Style" LoRAs from CivitAI</li>
+        <li>Apply at 0.6-0.8 strength</li>
+    </ul>
+
+    <h3>Option 2: Use IP-Adapter</h3>
+    <ul>
+        <li>Load a Midjourney-generated reference image</li>
+        <li>Use IPAdapter Unified Loader + IPAdapter Encoder + IPAdapter Apply</li>
+        <li>Weight: 0.7-1.0 for strong style transfer</li>
+    </ul>
+
+    <h3>Option 3: Ultimate Quality Pipeline (Hi-Res Fix Equivalent)</h3>
+    <div class="code-block">KSampler (base 1024px) → VAEDecode →
+[Upscale by 1.5-2x using 4x-UltraSharp] →
+VAEEncode → KSampler (img2img, denoise 0.4-0.5, steps 15-20) →
+VAEDecode → Save</div>
+
+    <h2>Step 7: Recommended Custom Nodes</h2>
+
+    <p>Install via ComfyUI Manager:</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Node Pack</th>
+                <th>Purpose</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td class="node-name">ComfyUI-Manager</td>
+                <td>Essential - manage other nodes</td>
+            </tr>
+            <tr>
+                <td class="node-name">ComfyUI-Impact-Pack</td>
+                <td>Detailed face detailers</td>
+            </tr>
+            <tr>
+                <td class="node-name">ComfyUI-ControlNet-Aux</td>
+                <td>Preprocessors</td>
+            </tr>
+            <tr>
+                <td class="node-name">ComfyUI_IPAdapter_plus</td>
+                <td>Style/face transfer</td>
+            </tr>
+            <tr>
+                <td class="node-name">ComfyUI-Efficiency-Nodes</td>
+                <td>Simplified workflows</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <hr class="divider">
+
+    <h2>Quick Reference: Recommended Settings</h2>
+
+    <h3>For SDXL (Juggernaut XL, RealVisXL)</h3>
+    <table>
+        <tr><td><strong>Resolution:</strong></td><td>1024×1024 or 896×1152</td></tr>
+        <tr><td><strong>Steps:</strong></td><td>30-40</td></tr>
+        <tr><td><strong>CFG:</strong></td><td>6-8</td></tr>
+        <tr><td><strong>Sampler:</strong></td><td>dpmpp_2m_sde</td></tr>
+        <tr><td><strong>Scheduler:</strong></td><td>karras</td></tr>
+    </table>
+
+    <h3>For Flux</h3>
+    <table>
+        <tr><td><strong>Resolution:</strong></td><td>1024×1024 or 1216×832</td></tr>
+        <tr><td><strong>Steps:</strong></td><td>4-8 (with appropriate scheduler)</td></tr>
+        <tr><td><strong>CFG:</strong></td><td>1-3</td></tr>
+        <tr><td><strong>Sampler:</strong></td><td>euler or dpmpp_2m</td></tr>
+    </table>
+
+    <h3>For SD 1.5</h3>
+    <table>
+        <tr><td><strong>Resolution:</strong></td><td>512×512 or 512×768</td></tr>
+        <tr><td><strong>Steps:</strong></td><td>20-30</td></tr>
+        <tr><td><strong>CFG:</strong></td><td>7-8</td></tr>
+        <tr><td><strong>Sampler:</strong></td><td>dpmpp_2m</td></tr>
+        <tr><td><strong>Scheduler:</strong></td><td>karras</td></tr>
+    </table>
+
+    <hr class="divider">
+
+    <h2>Resources & Links</h2>
+
+    <ul>
+        <li><strong>ComfyUI GitHub:</strong> https://github.com/comfyanonymous/ComfyUI</li>
+        <li><strong>CivitAI (Models):</strong> https://civitai.com</li>
+        <li><strong>HuggingFace (Models):</strong> https://huggingface.co/models</li>
+        <li><strong>ComfyUI Examples:</strong> https://comfyanonymous.github.io/ComfyUI_examples/</li>
+    </ul>
+
+    <div style="margin-top: 60px; text-align: center; color: #95a5a6; padding: 20px;">
+        <p>Generated for ComfyUI Learning — April 2026</p>
+    </div>
+
+</body>
+</html>
