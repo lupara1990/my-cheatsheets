@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<<htmlhtml lang="en">
+<<headhead>
+    <<metameta charset="UTF-8">
+    <<metameta name="viewport" content="width=device-width, initial-scale=1.0">
+    <<titletitle>InvokeAI Cheatsheet</title>
+    <<stylestyle>
+        :root {
+            --primary-color: #6366f1;
+            --bg-color: #0f172a;
+            --card-bg: #1e293b;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent-color: #818cf8;
+            --border-color: #334155;
+        }
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .container {
+            max-width: 900px;
+            width: 100%;
+        }
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+        .subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+        section {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 30px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            font-size: 1.5rem;
+            border-bottom: 2px solid var(--primary-color);
+            padding-bottom: 8px;
+            margin-top: 0;
+            color: var(--accent-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        h3 {
+            font-size: 1.2rem;
+            color: var(--text-main);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 10px 0;
+        }
+        th, td {
+            text-align: left;
+            padding: 12px;
+            border-bottom: 1px solid var(--border-color);
+        }
+        th {
+            color: var(--text-muted);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        code {
+            background: #000;
+            color: #facc15;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9em;
+        }
+        .cli-list {
+            list-style: none;
+            padding: 0;
+        }
+        .cli-list li {
+            margin-bottom: 8px;
+            display: flex;
+            gap: 10px;
+        }
+        .cli-cmd {
+            font-weight: bold;
+            color: var(--accent-color);
+            min-width: 180px;
+        }
+        .footer {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-top: 40px;
+        }
+        .badge {
+            background: var(--primary-color);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <<divdiv class="container">
+        <<headerheader>
+            <h1>🎨 InvokeAI Cheatsheet</h1>
+            <<pp class="subtitle">A comprehensive guide to the InvokeAI creative engine, covering WebUI shortcuts, CLI commands, and core features.</p>
+        </header>
+
+        <<sectionsection>
+            <h2>⌨️ WebUI Keyboard Shortcuts</h2>
+            <<pp style="color: var(--text-muted); font-style: italic; margin-bottom: 20px;">Access the Hotkeys Modal with <code>Shift + ?</code> to customize these.</p>
+
+            <h3>Main Application</h3>
+            <table>
+                <thead>
+                    <tr><th>Action</th><th>Shortcut</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Invoke Action</strong></td><td><code>Ctrl + Enter</code></td></tr>
+                    <tr><td><strong>Invoke Action (Front of Queue)</strong></td><td><code>Ctrl + Shift + Enter</code></td></tr>
+                    <tr><td><strong>Cancel Current Queue Item</strong></td><td><code>Shift + X</code></td></tr>
+                    <tr><td><strong>Clear Queue</strong></td><td><code>Ctrl + Shift + X</code></td></tr>
+                    <tr><td><strong>Focus on Prompt</strong></td><td><code>Alt + A</code></td></tr>
+                    <tr><td><strong>Toggle Left Panel</strong></td><td><code>T</code> or <code>O</code></td></tr>
+                    <tr><td><strong>Toggle Right Panel</strong></td><td><code>G</code></td></tr>
+                    <tr><td><strong>Toggle All Panels</strong></td><td><code>F</code></td></tr>
+                    <tr><td><strong>Reset Panel Layout</strong></td><td><code>Shift + R</code></td></tr>
+                    <tr><td><strong>Switch Tabs</strong></td><td><code>1</code> (Canvas), <code>2</code> (Upscaling), <code>3</code> (Workflows), <code>4/5</code> (Models/Queue)</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Canvas (Drawing & Editing)</h3>
+            <table>
+                <thead>
+                    <tr><th>Action</th><th>Shortcut</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Move Tool</strong></td><td><code>V</code></td></tr>
+                    <tr><td><strong>Brush Tool</strong></td><td><code>B</code></td></tr>
+                    <tr><td><strong>Eraser Tool</strong></td><td><code>E</code></td></tr>
+                    <tr><td><strong>Bbox Tool</strong></td><td><code>C</code></td></tr>
+                    <tr><td><strong>Rect Tool</strong></td><td><code>U</code></td></tr>
+                    <tr><td><strong>View Tool</strong></td><td><code>H</code></td></tr>
+                    <tr><td><strong>Color Picker</strong></td><td><code>I</code></td></tr>
+                    <tr><td><strong>Tool Width</strong></td><td><code>[</code> (Dec) / <code>]</code> (Inc)</td></tr>
+                    <tr><td><strong>Zoom</strong></td><td><code>Ctrl + 0</code> (Fit), <code>Ctrl + 1</code> (100%), <code>Ctrl + 2</code> (200%)</td></tr>
+                    <tr><td><strong>Undo / Redo</strong></td><td><code>Ctrl + Z</code> / <code>Ctrl + Shift + Z</code></td></tr>
+                    <tr><td><strong>Layer Navigation</strong></td><td><code>Alt + [</code> (Prev) / <code>Alt + ]</code> (Next)</td></tr>
+                </tbody>
+            </table>
+
+            <h3>Workflows & Viewer</h3>
+            <table>
+                <thead>
+                    <tr><th>Action</th><th>Shortcut</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td><strong>Add Node</strong></td><td><code>Shift + A</code> or <code>Space</code></td></tr>
+                    <tr><td><strong>Toggle Viewer</strong></td><td><code>Z</code></td></tr>
+                    <tr><td><strong>Remix</strong></td><td><code>R</code></td></tr>
+                    <tr><td><strong>Recall Seed/Prompt</strong></td><td><code>S</code> (Seed), <code>P</code> (Prompt)</td></tr>
+                    <tr><td><strong>Load Workflow</strong></td><td><code>W</code></td></tr>
+                </tbody>
+            </table>
+        </section>
+
+        <<sectionsection>
+            <h2>💻 CLI Commands & Usage</h2>
+            <<pp style="color: var(--text-muted); margin-bottom: 20px;">Accessed via the launcher or by running <code>invokeai</code>.</p>
+
+            <h3>Generation Arguments</h3>
+            <<pp style="margin-bottom: 10px;">Used after the <code>invoke&gt;</code> prompt: <code>invoke&gt; a futuristic city -W 640 -H 480 -n 4</code></p>
+            <<ulul class="cli-list">
+                <li><<spanspan class="cli-cmd">-W / --width</span> Image width (multiple of 64)</li>
+                <li><<spanspan class="cli-cmd">-H / --height</span> Image height</li>
+                <li><<spanspan class="cli-cmd">-n / --iterations</span> Number of images</li>
+                <li><<spanspan class="cli-cmd">-s / --steps</span> Refinement steps</li>
+                <li><<spanspan class="cli-cmd">-C / --cfg_scale</span> Guidance scale (5.0 - 20.0)</li>
+                <li><<spanspan class="cli-cmd">-S / --seed</span> Set random seed</li>
+                <li><<spanspan class="cli-cmd">-A / --sampler</span> Select sampler</li>
+                <li><<spanspan class="cli-cmd">-g / --grid</span> Save results as a grid</li>
+                <li><<spanspan class="cli-cmd">-I / --init_img</span> Path for img2img initialization</li>
+                <li><<spanspan class="cli-cmd">-M / --init_mask</span> Path for inpainting mask</li>
+            </ul>
+
+            <h3>Administrative Commands</h3>
+            <<ulul class="cli-list">
+                <li><<spanspan class="cli-cmd">!models</span> List defined models and show active one</li>
+                <li><<spanspan class="cli-cmd">!switch [name]</span> Switch loaded models</li>
+                <li><<spanspan class="cli-cmd">!import_model [url]</span> Install model from HF or local disk</li>
+                <li><<spanspan class="cli-cmd">!fix [file]</span> Upscale or face restoration</li>
+                <li><<spanspan class="cli-cmd">!history</span> Show numbered command history</li>
+                <li><<spanspan class="cli-cmd">!fetch [file]</span> Retrieve parameters used for a specific image</li>
+                <li><<spanspan class="cli-cmd">!search [term]</span> Search command history</li>
+            </ul>
+        </section>
+
+        <<sectionsection>
+            <h2>🚀 Core Features</h2>
+            <<ulul class="cli-list">
+                <li><strong>Unified Canvas:</strong> Layer-based environment for img2img, inpainting, and outpainting.</li>
+                <li><strong>Node-Based Workflows:</strong> Visual graph backend for building complex pipelines.</li>
+                <li><strong>Model Management:</strong> Intuitive manager for Flux, SDXL, and SD 1.5.</li>
+                <li><strong>ControlNet Mastery:</strong> Precision compositional control via depth, edges, and poses.</li>
+                <li><strong>Local & Private:</strong> 100% self-hosted for maximum privacy and control.</li>
+            </ul>
+        </section>
+
+        <<divdiv class="footer">
+            Generated for the InvokeAI community.
+        </div>
+    </div>
+</body>
+</html>
